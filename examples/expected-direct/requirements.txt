@@ -1,7 +1,7 @@
 # runtime
 langchain>=1.0
 langchain-openai
-python-dotenv==1.0.1
+python-dotenv==1.2.2
 langchain-classic>=1.0,<2
 langchain-community>=0.4
 langchain-text-splitters>=1.1,<2
