@@ -1,0 +1,122 @@
+{
+ "classic": {
+  "langchain_classic": [],
+  "langchain_classic.agents": [
+   "AgentExecutor"
+  ],
+  "langchain_classic.agents.executor": [
+   "AgentExecutor"
+  ],
+  "langchain_classic.chains": [
+   "LLMChain"
+  ],
+  "langchain_classic.chains.llm": [
+   "LLMChain"
+  ],
+  "langchain_classic.chat_models": [
+   "ChatAnthropic",
+   "init_chat_model"
+  ],
+  "langchain_classic.chat_models.base": [
+   "init_chat_model"
+  ],
+  "langchain_classic.hub": [
+   "pull"
+  ],
+  "langchain_classic.indexes": [
+   "index"
+  ],
+  "langchain_classic.indexes._sql": [
+   "AsyncEngine",
+   "index"
+  ],
+  "langchain_classic.prompts": [
+   "PromptTemplate"
+  ],
+  "langchain_classic.text_splitter": [
+   "RecursiveCharacterTextSplitter"
+  ],
+  "langchain_classic.vectorstores": [
+   "FAISS",
+   "VectorStore"
+  ]
+ },
+ "counts": {
+  "gone": 2,
+  "keep": 1,
+  "move": 8,
+  "partial": 2,
+  "partial_names_gone": 0,
+  "partial_names_moved": 2
+ },
+ "dead": {},
+ "extras": {
+  "langchain_classic.indexes": [
+   "sqlalchemy_asyncio"
+  ],
+  "langchain_classic.indexes._sql": [
+   "sqlalchemy_asyncio"
+  ]
+ },
+ "meta": {
+  "computed_on": "2026-11-18",
+  "from": {
+   "langchain": "0.3.29"
+  },
+  "to": {
+   "langchain": "1.5.0",
+   "langchain-classic": "1.0.8"
+  }
+ },
+ "new": {
+  "langchain": [],
+  "langchain.agents": [
+   "create_agent"
+  ],
+  "langchain.chat_models": [
+   "init_chat_model"
+  ]
+ },
+ "old": {
+  "langchain": "keep",
+  "langchain.agents": "partial",
+  "langchain.agents.executor": "move",
+  "langchain.chains": "move",
+  "langchain.chains.llm": "move",
+  "langchain.chat_models": "partial",
+  "langchain.hub": "move",
+  "langchain.indexes": "move",
+  "langchain.prompts": "move",
+  "langchain.prompts.pipeline": "gone",
+  "langchain.pydantic_v1": "gone",
+  "langchain.text_splitter": "move",
+  "langchain.vectorstores": "move"
+ },
+ "origins": {
+  "langchain_classic.chat_models": {
+   "ChatAnthropic": [
+    "langchain_community.chat_models",
+    "ChatAnthropic"
+   ]
+  },
+  "langchain_classic.prompts": {
+   "PromptTemplate": [
+    "langchain_core.prompts",
+    "PromptTemplate"
+   ]
+  },
+  "langchain_classic.text_splitter": {
+   "RecursiveCharacterTextSplitter": [
+    "langchain_text_splitters",
+    "RecursiveCharacterTextSplitter"
+   ]
+  },
+  "langchain_classic.vectorstores": {
+   "FAISS": [
+    "langchain_community.vectorstores",
+    "FAISS"
+   ]
+  }
+ },
+ "schema": 1
+}

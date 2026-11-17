@@ -1,0 +1,44 @@
+[project]
+name = "langchain-v1-migrate"
+version = "0.1.0"
+description = "Unofficial codemod that moves LangChain 0.x imports to langchain 1.x / langchain-classic, using a move table computed from the real packages."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+keywords = ["langchain", "migration", "codemod", "libcst", "langchain-classic"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "libcst==1.9.0",
+    "tomlkit==0.15.2",
+]
+
+[project.scripts]
+langchain-v1-migrate = "langchain_v1_migrate.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/LeeGyeongPil/langchain-v1-migrate"
+Issues = "https://github.com/LeeGyeongPil/langchain-v1-migrate/issues"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/langchain_v1_migrate"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
