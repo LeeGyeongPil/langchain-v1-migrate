@@ -1,0 +1,39 @@
+# The tool makes no network or model calls, so the whole test suite runs offline.
+name: ci
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 3 * * 1"   # weekly: catches new langchain releases breaking the real-import check
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v7
+      - run: uv sync --locked --python ${{ matrix.python }}
+      - run: uv run --python ${{ matrix.python }} pytest -q
+
+  # AC-9: the migrated example files really import on langchain 1.x (needs PyPI).
+  import-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v7
+      - name: migrated files import
+        run: >
+          uv run --isolated --no-project --python 3.12
+          --with langchain==1.5.0 --with "langchain-classic[community]==1.0.8" --with "sqlalchemy[asyncio]"
+          python -I scripts/import_check.py examples/expected examples/expected-direct
+      - name: original file fails the way users see it
+        shell: bash   # GitHub's bash adds -o pipefail, so the 'if ... | tee' sees the real exit code
+        run: |
+          if uv run --isolated --no-project --python 3.12 --with langchain==1.5.0 --with "langchain-classic[community]==1.0.8" --with "sqlalchemy[asyncio]" python -I scripts/import_check.py examples/legacy/app.py | tee out.txt; then
+            echo "the 0.x example unexpectedly imports"; exit 1
+          fi
+          grep -q "No module named 'langchain.chains'" out.txt

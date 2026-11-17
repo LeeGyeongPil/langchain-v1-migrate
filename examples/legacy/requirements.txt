@@ -1,0 +1,4 @@
+# runtime
+langchain>=1.0
+langchain-openai
+python-dotenv==1.0.1
