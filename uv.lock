@@ -39,7 +39,7 @@ wheels = [
 
 [[package]]
 name = "langchain-v1-migrate"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "libcst" },

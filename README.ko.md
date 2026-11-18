@@ -109,6 +109,8 @@ langchain-v1-migrate lookup langchain.chat_models.ChatAnthropic --target direct
 | `--target` | `classic` | `direct` 는 재수출을 따라 `langchain_core`·`langchain_text_splitters`·`langchain_community` 로 직행 |
 | `--lang`, `LANGCHAIN_V1_MIGRATE_LANG` | `LC_ALL`/`LC_MESSAGES`/`LANG` | `en` 또는 `ko`. 우선순위는 `--lang`, 환경 변수, 로캘 순(`ko` 로 시작하면 한국어, 그 밖은 영어) |
 | `--exclude GLOB` | 없음 | 폴더를 훑을 때 건너뜀, 여러 번 가능 |
+
+폴더를 훑을 때 `.git`, `.hg`, `.venv`, `venv`, `node_modules`, `__pycache__`, `build`, `dist`, `.tox`, `.ipynb_checkpoints`, `*.egg-info`, 이름과 상관없는 가상환경(`pyvenv.cfg` 가 있는 폴더), `site-packages`/`dist-packages` 폴더도 기본으로 건너뜁니다.
 | `--table FILE` | 내장 표 | `table` 로 직접 만든 표 사용 |
 
 모델 호출이 없으므로 목(mock) 모드도 API 키도 없습니다.

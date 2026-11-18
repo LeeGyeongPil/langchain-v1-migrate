@@ -1,6 +1,6 @@
 [project]
 name = "langchain-v1-migrate"
-version = "0.1.0"
+version = "0.1.1"
 description = "Unofficial codemod that moves LangChain 0.x imports to langchain 1.x / langchain-classic, using a move table computed from the real packages."
 readme = "README.md"
 license = "MIT"

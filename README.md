@@ -109,6 +109,8 @@ There is no config file. Options go on the command line.
 | `--target` | `classic` | `direct` follows re-exports to `langchain_core`, `langchain_text_splitters`, `langchain_community` |
 | `--lang`, `LANGCHAIN_V1_MIGRATE_LANG` | from `LC_ALL`/`LC_MESSAGES`/`LANG` | `en` or `ko`; priority is `--lang`, then the variable, then the locale (a locale starting with `ko` gives Korean, anything else English) |
 | `--exclude GLOB` | none | skip folders while walking, repeatable |
+
+By default the walk also skips `.git`, `.hg`, `.venv`, `venv`, `node_modules`, `__pycache__`, `build`, `dist`, `.tox`, `.ipynb_checkpoints`, `*.egg-info`, any virtual environment (a folder with `pyvenv.cfg`) and `site-packages`/`dist-packages` folders.
 | `--table FILE` | bundled table | use a table you computed with `table` |
 
 The tool makes no model calls, so there is no mock mode and no API key.

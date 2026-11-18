@@ -3,6 +3,11 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-11-18
+
+### Fixed
+- Folder walks now skip virtual environments of any name (folders with `pyvenv.cfg`) and `site-packages`/`dist-packages`, so installed packages are no longer checked or rewritten by `fix . --write`.
+
 ## [0.1.0] - 2026-11-18
 
 ### Added

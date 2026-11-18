@@ -41,6 +41,13 @@ def _excluded(name: str, rel: str, patterns: tuple[str, ...]) -> bool:
     return any(fnmatch.fnmatch(name, p) or fnmatch.fnmatch(rel, p) for p in patterns)
 
 
+def _is_installed_env(folder: Path) -> bool:
+    """True for a virtual environment (any name) or an installed-packages folder."""
+    if folder.name in ("site-packages", "dist-packages"):
+        return True
+    return (folder / "pyvenv.cfg").is_file()
+
+
 def _classify(path: Path, out: Targets) -> None:
     name = path.name
     if name.endswith(".py"):
@@ -73,7 +80,12 @@ def collect(paths: list[str], excludes: tuple[str, ...] = ()) -> Targets:
             continue
         for current, dirs, files in os.walk(root):
             base = Path(current)
-            dirs[:] = sorted(d for d in dirs if not _excluded(d, str((base / d).relative_to(root)), patterns))
+            dirs[:] = sorted(
+                d
+                for d in dirs
+                if not _excluded(d, str((base / d).relative_to(root)), patterns)
+                and not _is_installed_env(base / d)
+            )
             for fname in sorted(files):
                 rel = str((base / fname).relative_to(root))
                 if _excluded(fname, rel, tuple(excludes)):
