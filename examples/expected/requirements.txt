@@ -1,6 +1,6 @@
 # runtime
 langchain>=1.0
 langchain-openai
-python-dotenv==1.0.1
+python-dotenv==1.2.2
 langchain-classic[community]>=1.0,<2
 sqlalchemy[asyncio]
